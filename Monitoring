@@ -1,0 +1,99 @@
+Monitering Activities
+
+Auto_EPM-IAMS_STIBO_Support_Monitoring_Prod@epam.com
+
+z*26y+MZQXqwgC~LfaTEnLB-_
+
+PROD Env
+Host : 137.181.176.48
+username : stibosw
+Pass : 6N5njEY$fo3d1Q
+
+cd /share/upload/hotfolders/currentprice
+cd /share/upload/hotfolders/FuturePrice
+grep -r "80835894"
+
+
+rsa-key-20250617
+
+1.Demand Planning
+2.Pre-Active/Release
+3.Ok to Order/Effective
+4.Active/1st Ship
+5.Remnant/Last order
+
+18001080
+
+-------------- Find Files in WinSCP ---------------------------------------------
+
+
+cd /upload/hotfolders/REST/
+ls -lrth
+mkdir /home/stibosw/PIM_Artwork_POA_File_Folder
+find . -type f -exec grep -H '80321501' {} \;
+cp ./failed/rest1694453539712057215.xml ./save/rest1694453539712057215.xml /home/stibosw/PIM_Artwork_POA_File_Folder
+
+
+### **Navigation Commands**
+- `cd /upload/hotfolders/REST/` → Changed directory to `REST`
+- `cd IEP06_EnoviaImportPOAData/` → Moved into the `IEP06_EnoviaImportPOAData` folder
+
+### **File Searching and Content Checking**
+- `find . -type f -exec grep -H '80321501' {} \;` → Searched for `80321501` inside files, returning matches from `./save/` and `./failed/`
+- `find . -type f -name "rest1694453539712057215.xml"` → Checked if the file existed in the current directory structure
+
+### **File Copying and Moving Attempts**
+- `cp rest1694453539712057215.xml /home/stibosw/PIM_Artwork_POA_File_Folder` → Attempted to copy a file but failed due to `No such file or directory`
+- `mv ./save/rest1694453539712057215.xml ./failed/rest1694453539712057215.xml /home/stibosw/PIM_Artwork_POA_File_Folder` → Tried to move files but was prevented from overwriting an existing file
+- `mv -f ./save/rest1694453539712057215.xml ./failed/rest1694453539712057215.xml /home/stibosw/PIM_Artwork_POA_File_Folder` → Forced move but failed due to missing source files
+
+### **File Presence Checking**
+- `ls -l /home/stibosw/PIM_Artwork_POA_File_Folder/rest1694453539712057215.xml` → Verified the file exists in the target folder
+- `ls -l ./save/rest1694453539712057215.xml` → Checked for the file in `./save/`, but it was missing
+
+### **Folder Creation**
+- `mkdir /home/stibosw/PIM_Artwork_POA_File_Folder` → Created the target directory for storing files
+
+
+
+"C:\Program Files\PuTTY\putty.exe" -ssh kannan@png-preprod-sftp.mdm.stibosystems.com -i "C:\Users\kannan_thanasekaran\Downloads\key (1).ppk"
+
+plink.exe -v -i "C:\Users\kannan_thanasekaran\Downloads\key (1).ppk" kannan@png-preprod-sftp.mdm.stibosystems.com
+
+Looking up host "png-preprod-sftp.mdm.stibosystems.com" for SSH connection
+Connecting to 57.151.35.136 port 22
+We claim version: SSH-2.0-PuTTY_Release_0.82
+Connected to 57.151.35.136 (from 192.168.132.218:57709)
+Remote version: SSH-2.0-OpenSSH_8.3
+Using SSH protocol version 2
+No GSSAPI security context available
+Doing ECDH key exchange with curve Curve25519, using hash SHA-256 (SHA-NI accelerated)
+Server also has rsa-sha2-512/rsa-sha2-256/ssh-rsa host keys, but we don't know any of them
+Host key fingerprint is:
+ssh-ed25519 255 SHA256:En/3W18N8xCX7D0Q6yC24pxSmoz9hXD3+/4UkOsboM0
+Initialised AES-256 SDCTR (AES-NI accelerated) outbound encryption
+Initialised HMAC-SHA-256 (SHA-NI accelerated) outbound MAC algorithm
+Initialised AES-256 SDCTR (AES-NI accelerated) inbound encryption
+Initialised HMAC-SHA-256 (SHA-NI accelerated) inbound MAC algorithm
+Reading key file "C:\Users\kannan_thanasekaran\Downloads\key (1).ppk"
+Pageant is running. Requesting keys.
+Pageant has 1 SSH-2 keys
+Pageant key #0 matches configured key file
+Using username "kannan".
+Trying Pageant key #0
+Authenticating with public key "rsa-key-20250617" from agent
+Sending Pageant's response
+Access granted
+Access granted. Press Return to begin session.
+
+Opening main session channel
+Remote debug message: /home/kannan/.ssh/authorized_keys:1: key options: agent-forwarding port-forwarding pty user-rc x11-forwarding
+Remote debug message: /home/kannan/.ssh/authorized_keys:1: key options: agent-forwarding port-forwarding pty user-rc x11-forwarding
+Opened main channel
+Allocated pty
+Started a shell/command
+Session sent command exit status 1
+Connection from user kannan 157.51.58.123 port 57709: refusing non-sftp session
+This service allows sftp connections only.
+Sent EOF message
+Main session channel closed
