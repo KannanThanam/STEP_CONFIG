@@ -1,0 +1,24 @@
+Start: lifecycle & sales area evaluation
+
+determine desired status per salesAreaRef (populateInMarketStatus / populateFutureStatus / populatePreviousInMarketStatus)
+	-- set salesAreaRef.ProductStatus and salesAreaRef.ItemProductStatus (TM side)
+
+For each packaging (Each/Case) under FPC:
+	-- If packaging is FPC_TM: set salesAreaRef values there
+	-- If packaging is Each/Case:
+		- set packaging.ItemProductStatus / ProductStatus locally
+		- compute effectedProducts = getEffectedProducts(...)
+		- For each effectedProduct:
+		- if packaging.ProductStatus changed -> call updateStatus(effectedProduct, statusValue, ...)
+		- else skip (no updateStatus call)
+
+updateStatus(productIM, productStatusValue):
+	set packing-level attributes (GTINStatus, ProductStatus, ItemProductStatus, PIMIDAttribute, etc.)
+	populateCustomers(productIM, TM): copy GTINStatus -> PKG_TM_Reference.GTINStatus, set ConsumerMarket
+	calculateAttributes(...)
+	populateProductStatusNewAtTM(productIM, ...): writes Product_Status_New at TM link (and PGP fields for special sales areas)
+	populateGTINStatusNew(productIM, ...): sets packaging.GTIN_Status_New from PKG_TM_Reference.GTINStatus; deletes packaging GTIN_Status_New if brendaVisibility()==false
+	toPopulateProductStatusNewAtPacks(...): set packaging Product_Status_New
+	approve / republish packaging and (in contexts) TM as required
+
+End : TM salesAreaRef shows ProductStatus; PKG_TM_Reference metadata reflects GTINStatus; packaging has ProductStatus/GTIN_Status_New/Product_Status_New updated (or removed if visibility off)
